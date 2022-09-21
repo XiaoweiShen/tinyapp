@@ -72,8 +72,15 @@ app.get("/fetch", (req, res) => {
   res.send(`a = ${varibleForTest}`);
 });
 
+app.post("/urls/:id/delete",(req,res)=>{
+  console.log(req.params.id);
+  delete urlDatabase[req.params.id];
+  res.redirect("/urls");
+})
+
+
 app.post("/urls", (req, res) => {
-  console.log(req.body); // Log the POST request body to the console
+  //console.log(req.body); // Log the POST request body to the console
   let newkey = generateRandomString();
   //regenerate the new key if key is already included in the urlDatabase
   while (Object.keys(urlDatabase).includes(newkey)) {
