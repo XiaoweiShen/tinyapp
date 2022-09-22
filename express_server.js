@@ -49,11 +49,7 @@ app.get('/urls/:id',(req,res)=>{
   }
   else{
     res.send("invalid short url, please check and retry!");
-  }
-  
-  //res.render("urls_show", templateVars);
-  //console.log(templateVars);
-    
+  }   
 });
 
 app.get("/urls.json", (req, res) => {
@@ -73,11 +69,19 @@ app.get("/fetch", (req, res) => {
 });
 
 app.post("/urls/:id/delete",(req,res)=>{
-  console.log(req.params.id);
   delete urlDatabase[req.params.id];
   res.redirect("/urls");
-})
+});
 
+app.post("/urls/:id/edit",(req,res)=>{
+  const templateVars = {'id':req.params.id,'longURL':urlDatabase[req.params.id]};
+  res.render("urls_show", templateVars);
+});
+
+app.post("/urls/:id/upd",(req,res)=>{
+  urlDatabase[req.params.id]=req.body['updatedURL'];
+  res.redirect("/urls");
+});
 
 app.post("/urls", (req, res) => {
   //console.log(req.body); // Log the POST request body to the console

@@ -8,3 +8,16 @@ const str  = Math.random().toString(36).slice(2).split('');
 
 console.log(str.join('').slice(0,6));
 
+const findKeyByValue = (obj,str) => {
+      for (let item in obj) {
+        if (obj[str])
+          return (item);
+      }
+    };
+
+const obj={as:11111,bs:22222}
+let ok = 'as';
+let ok1 = {};
+ok1[ok]=obj[ok];
+console.log(ok1);
+
