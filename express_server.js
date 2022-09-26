@@ -273,7 +273,6 @@ app.post("/register",(req,res)=>{
           urls:{},
           usernam:req.body["email"]
         };
-        console.log(userDatabase);
         res.render("urls_index", templateVars);
       } else {
         const errorMessage = 'User already registered!';
@@ -386,7 +385,6 @@ app.post("/urls/:id/edit",(req,res)=>{
 app.post("/urls/:id/upd",(req,res)=>{
   const id = req.params.id;
   const validID = locateUserID(req.session.email);
-  console.log(validID);
   if (validID) {
     if (userDatabase[validID]["urlDatabase"][id]) {
       userDatabase[validID]["urlDatabase"][id] = req.body['updatedURL'];
@@ -413,7 +411,6 @@ app.post("/urls", (req, res) => {
   const validID = locateUserID(req.session.email);
   //Login part, include verify username &password, handle all edge condition
   if (validID) {
-    //console.log(req.body); // Log the POST request body to the console
     let newkey = generateRandomString();
     //regenerate the new key if key is already included in the urlDatabase
     while (Object.keys(userDatabase[validID]["urlDatabase"]).includes(newkey)) {
