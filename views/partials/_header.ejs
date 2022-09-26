@@ -19,12 +19,11 @@
       </div>
     </div>
     <% if (!usernam) { %>
-      <form class="form-inline my-1" action="/login" method="POST"></form>
+      <form class="form-inline my-1" action="/urls/reg" method="GET"></form>
       <div>
-        <h7>Sign in your user name:</h7>
-          <form action = "/login" method="post">
-          <input type = "text" name ="username">
-          <input type ="submit" value ="Submit">
+        <h7>User Login/Register</h7>
+          <form action = "/urls/reg" method="get">
+          <input type ="submit" value ="Login">
         </form>
       </div>
     <% } else { %>
