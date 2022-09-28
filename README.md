@@ -21,7 +21,6 @@ advanced JavaScript and Node concepts, and also learn more about Express.
 - bcrypt
 - body-parser
 - cookie-session
-- cookie-parser
 
 
 ## Getting Started
