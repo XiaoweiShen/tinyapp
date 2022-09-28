@@ -206,9 +206,7 @@ app.post("/login",(req,res)=>{
     res.status(400).render("urls_error",templateVars);
   }
 });
-
 // POST ------------------------register--------------------------------
-
 app.post("/register",(req,res)=>{
   if (req.body["email"] && req.body["password"]) {
     //if the email in wrong format
