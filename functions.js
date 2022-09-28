@@ -1,10 +1,8 @@
 const {userDatabase} = require("./env_DB");
-
 //register needed module--------------------------------------------------
 //Function to generate new Id which is random alphanumeric characters;
 const generateRandomString = ()=>{
   const str  = Math.random().toString(36).slice(2).split('');
-  const {userDatabase} = require('./express_server');
   //random generate uppercase letter in the string...
   str.forEach((element,index) => {
     str[index] = element.match(/[a-z]/i) ? (Math.random() < 0.65 ? element : element.toUpperCase()) : element;
@@ -13,12 +11,17 @@ const generateRandomString = ()=>{
   return (str.join('').slice(0,6));
 };
 
-const locateUserID = (name)=>{
+const locateUserID = (email)=>{
   for (key in userDatabase) {
-    if (userDatabase[key]["email"] === name) {
-      return (key)
+    if (userDatabase[key]["email"] === email) {
+      return (key);
     }
   }
 };
 
-module.exports = {generateRandomString,locateUserID};
+const verifyID = (ids)=>{
+  console.log(ids,typeof(ids),userDatabase[ids]);
+  return (ids ? userDatabase[ids]["id"] : null);
+};
+
+module.exports = {verifyID,generateRandomString,locateUserID};
