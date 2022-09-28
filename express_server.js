@@ -79,7 +79,6 @@ app.get("/register",(req,res)=>{
 });
 
 app.get("/urls/reg",(req,res)=>{
-  console.log(req.session.usrID);
   const validID = verifyID(req.session.usrID);
   if (validID) {
     res.redirect("/urls");
@@ -362,7 +361,6 @@ app.post("/urls", (req, res) => {
     
     //insert new item into urlDatabase
     urlDatabase[validID][newkey] = req.body['longURL'];
-    console.log(`/urls/${newkey}`);
     res.redirect(`/urls/${newkey}`);
   
   } else {

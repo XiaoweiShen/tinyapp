@@ -20,7 +20,6 @@ const locateUserID = (email)=>{
 };
 
 const verifyID = (ids)=>{
-  console.log(ids,typeof(ids),userDatabase[ids]);
   return (ids ? userDatabase[ids]["id"] : null);
 };
 
