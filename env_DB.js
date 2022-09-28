@@ -35,5 +35,4 @@ const urlDatabase = {
   }
 };
 
-
 module.exports = {urlDatabase,userDatabase};
