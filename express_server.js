@@ -149,7 +149,7 @@ app.get("/urls.json", (req, res) => {
 app.get('/u/:id',(req,res)=>{
   const shortURL = req.params.id;
   let flag = null;
-  for (keys in urlDatabase) {
+  for (let keys in urlDatabase) {
     if (urlDatabase[keys][shortURL]) {
       res.redirect(urlDatabase[keys][shortURL]);
       flag = 1;
@@ -210,14 +210,8 @@ app.post("/register",(req,res)=>{
   if (req.body["email"] && req.body["password"]) {
     //if the email in wrong format
     if (req.body["email"].includes("@") && req.body["email"].includes('.')) {
-      let checkIfExist = null;
       // check if email already exists:
-      for (keys in userDatabase) {
-        if (userDatabase[keys]["email"] === req.body["email"]) {
-          checkIfExist = true;
-        }
-      }
-      if (!checkIfExist) {
+      if (!locateUserID(req.body["email"])) {
         const newId = Object.keys(userDatabase).length + 1;
         userDatabase[newId] = {
           'id':newId,
